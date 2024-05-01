@@ -15,16 +15,46 @@ function App() {
   const [nameText, setNameText] = useState("");
   const [ageText, setAgeText] = useState("");
   const [add, setAdd] = useState([
-    { name: "Маша", age: 17, isMan: false },
-    { name: "Саша", age: 38, isMan: true },
-    { name: "Катя", age: 25, isMan: false },
-    { name: "Ваня", age: 30, isMan: true },
-    { name: "Максим", age: 40, isMan: true },
+    {
+      id: crypto.randomUUID(),
+      name: "Маша",
+      age: 17,
+      isMan: false,
+      isEdit: false,
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Саша",
+      age: 38,
+      isMan: true,
+      isEdit: false,
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Катя",
+      age: 25,
+      isMan: false,
+      isEdit: false,
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Ваня",
+      age: 30,
+      isMan: true,
+      isEdit: false,
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Максим",
+      age: 40,
+      isMan: true,
+      isEdit: false,
+    },
   ]);
 
   const addUser = () => {
     setAdd((prev) => [
-      ...add,
+      ...prev,
       { id: crypto.randomUUID(), name: nameText, age: ageText },
     ]);
     setNameText("");
