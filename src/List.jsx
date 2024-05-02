@@ -4,8 +4,7 @@ const List = ({ add, setAdd }) => {
   const [ed, setEd] = useState("");
 
   const handleEdit = (id, name, age) => {
-    //???????????????????????????????????????
-    setEd(`${name} - ${age}`);
+    setEd(name);
     setAdd((prev) =>
       prev.map((item) => (item.id === id ? { ...item, isEdit: true } : item))
     );
@@ -15,11 +14,12 @@ const List = ({ add, setAdd }) => {
     setAdd((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const handleChange = (event) => {
-    //?????????????????????????????????????????
+  const handleChange = (event, id) => {
     if (event.key === "Enter") {
       setAdd((prev) =>
-        prev.map((item) => (item.id === id ? { ...item, isEdit: true } : item))
+        prev.map((item) =>
+          item.id === id ? { ...item, name: ed, isEdit: false } : item
+        )
       );
     }
   };
@@ -28,10 +28,10 @@ const List = ({ add, setAdd }) => {
     <>
       <ul>
         {add.map((item) => (
-          <li key={crypto.randomUUID()}>
+          <li key={item.id}>
             {item.isEdit === true ? (
               <input
-                onKeyDown={handleChange}
+                onKeyDown={(e) => handleChange(e, item.id)}
                 value={ed}
                 onChange={(e) => {
                   setEd(e.target.value);
