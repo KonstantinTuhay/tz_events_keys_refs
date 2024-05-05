@@ -4,6 +4,7 @@ const List = ({ add, setAdd }) => {
   const [ed, setEd] = useState("");
 
   const handleEdit = (id, name, age) => {
+    console.log();
     setEd(name);
     setAdd((prev) =>
       prev.map((item) => (item.id === id ? { ...item, isEdit: true } : item))
