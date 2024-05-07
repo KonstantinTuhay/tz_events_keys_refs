@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import List from "./List";
+import MyContext from "./MyContext";
+import { useContext } from "react";
 
 const Registr = () => {
+  const value = useContext(MyContext);
   const refFocus = useRef(null);
 
   useEffect(() => {
@@ -68,7 +71,7 @@ const Registr = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="registrator">
         <label>
           Введите имя
@@ -105,8 +108,9 @@ const Registr = () => {
         <button onClick={addUser}>Add</button>
 
         <List add={add} setAdd={setAdd} />
+        <p>We use {value} mode</p>
       </div>
-    </>
+    </div>
   );
 };
 

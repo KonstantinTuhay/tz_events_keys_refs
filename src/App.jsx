@@ -7,7 +7,7 @@ function App() {
   const [theme, setTheme] = useState("light");
 
   return (
-    <>
+    <div>
       <MyContext.Provider value={theme}>
         <div className="wrapper" id={theme}>
           <label>
@@ -24,7 +24,7 @@ function App() {
           <Registr />
         </div>
       </MyContext.Provider>
-    </>
+    </div>
   );
 }
 
